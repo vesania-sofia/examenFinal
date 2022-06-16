@@ -297,6 +297,18 @@ void Clsempleados::mconsultarRegistroEmpleados(fstream &archivoEmpleado)
    }
 }
 
+void Clsempleados::mmostrarLineaRegistroEmpleados( ostream &salida, const Clsempleados &registroempleado )
+{
+       salida << left << setw( 10 ) << registroempleado.mobtenerid()
+          << setw( 20 ) << registroempleado.mobtenerNombre().data()
+          << setw( 20 ) << registroempleado.mobtenerApellidos().data()
+          << setw( 20 ) << registroempleado.mobtenerTelefono().data
+          << setw( 20 ) << registroempleado.mobtenerDPI().data()
+          << setw( 20 ) << registroempleado.mobtenerDireccion().data()
+          << setw( 20 ) << registroempleado.mobtenerFechaNac().data()
+          << endl;
+
+}
 
 Clsempleados::~Clsempleados()
 {
