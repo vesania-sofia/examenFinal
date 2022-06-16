@@ -11,7 +11,7 @@
 //clases
 #include "ClsmenuMantenimiento.h"
 #include "Clsempleados.h"
-//#include "Clspaciente.h"
+#include "Clspaciente.h"
 //#include "Clsexamen.h"
 
 #define ENTER 13
