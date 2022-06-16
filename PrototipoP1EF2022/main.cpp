@@ -10,15 +10,15 @@
 
 //clases
 #include "ClsmenuMantenimiento.h"
-//#include "Clsempleados.h"
+#include "Clsempleados.h"
 //#include "Clspaciente.h"
 //#include "Clsexamen.h"
 
-//#define ENTER 13
-//#define BACKSPACE 8
+#define ENTER 13
+#define BACKSPACE 8
 
 using namespace std;
-/*
+
 typedef struct {
     char usuario[10],contrasenia[10];
 } tlogin;
@@ -187,7 +187,7 @@ void login(){
         }
 
         usuario<<left<<setw(10)<< codigo;
-        usuario.close();*/
+        usuario.close();
     //Menu principal
 	do
     {
@@ -210,7 +210,7 @@ void login(){
         {
         case 1:
             {
-                /*accion = "Ingreso a Mantenimiento";
+                accion = "Ingreso a Mantenimiento";
                 ofstream bitacora("Bitacora.txt", ios::app | ios::out);
                 if (!bitacora)
                 {
@@ -224,145 +224,25 @@ void login(){
                 <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
                 <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
                 bitacora.close();
-*/
+
                 ClsmenuMantenimientos menuMantenimientos;
                 menuMantenimientos.mmenuMantimientos();
             }
             break;
         case 2:
             {
-                /*accion = "Ingreso a Gen. Nomina";
-                ofstream bitacora("Bitacora.txt", ios::app | ios::out);
-                if (!bitacora)
-                {
-                    cerr << "No se pudo abrir el archivo." << endl;
-                    cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                    exit ( 3 );
-                }
-                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
-                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
-                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
-                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
-                bitacora.close();
-                system("cls");
-                //Creando objetos
-                Clsnomina nomina;
-                Clsempleados empleado;
-                ClsPuestos puesto;
-                ClsConceptos concepto;
-                ClsEmpresa empresa;
-                Clsencabezado encabezado;
-                // abrir el archivo en modo de lectura y escritura
-                fstream archivoNomina("registronominas.dat", ios::in | ios::out | ios::binary);
-                // salir del programa si fstream no puede abrir el archivo
-                if ( !archivoNomina )
-                    {
-                        cerr << "No se pudo abrir el archivo." << endl;
-                        nomina.mcrearNominas();
-                        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                        exit ( 1 );
-                    }
-                // abrir el archivo en modo de lectura y escritura
-                fstream archivoEmpleados("registrosempleados.dat", ios::in | ios::out | ios::binary);
-                // salir del programa si fstream no puede abrir el archivo
-                if ( !archivoEmpleados )
-                    {
-                        cerr << "No se pudo abrir el archivo." << endl;
-                        empleado.mcrearEmpleados();
-                        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                        exit ( 1 );
-                    }
-                fstream archivoPuestos("registrospuestos.dat", ios::in | ios::out | ios::binary);
-                // salir del programa si fstream no puede abrir el archivo
-                if ( !archivoPuestos )
-                    {
-                        cerr << "No se pudo abrir el archivo." << endl;
-                        puesto.mcrearPuestos();
-                        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                        exit ( 1 );
-                    }
-                fstream archivoEmpresa("registrosempresa.dat", ios::in | ios::out | ios::binary);
-                // salir del programa si fstream no puede abrir el archivo
-                if ( !archivoEmpresa )
-                    {
-                        cerr << "No se pudo abrir el archivo." << endl;
-                        empresa.mcrearEmpresa();
-                        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                        exit ( 1 );
-                    }
-                fstream archivoEncabezado("registroEncabezado.dat", ios::in | ios::out | ios::binary);
-                // salir del programa si fstream no puede abrir el archivo
-                if ( !archivoEncabezado )
-                    {
-                        cerr << "No se pudo abrir el archivo." << endl;
-                        encabezado.mcrearEncabezado();
-                        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                        exit ( 1 );
-                    }
-                fstream archivoConcepto("RegistrosConceptos.dat", ios::in | ios::out | ios::binary);
-                // salir del programa si fstream no puede abrir el archivo
-                if ( !archivoConcepto )
-                    {
-                        cerr << "No se pudo abrir el archivo." << endl;
-                        encabezado.mcrearEncabezado();
-                        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                        exit ( 1 );
-                    }
-                nomina.mnuevaNomina(archivoNomina, archivoEmpleados, archivoPuestos, archivoEmpresa, archivoEncabezado, archivoConcepto);
-                archivoNomina.close();
-                archivoEmpleados.close();
-                archivoPuestos.close();
-                archivoEmpresa.close();
-                archivoEncabezado.close();
-                archivoConcepto.close();*/
+
             }
             break;
         case 3:
             {
-               /* accion = "Ingreso a Info. Nomina";
-                ofstream bitacora("Bitacora.txt", ios::app | ios::out);
-                if (!bitacora)
-                {
-                    cerr << "No se pudo abrir el archivo." << endl;
-                    cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                    exit ( 3 );
-                }
-                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
-                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
-                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
-                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
-                bitacora.close();
-                //Creando objetos
-                Clsnomina nomina;
-                Clsencabezado encabezado;
-                // abrir el archivo en modo de lectura y escritura
-                fstream archivoNomina("registronominas.dat", ios::in | ios::out | ios::binary);
-                // salir del programa si fstream no puede abrir el archivo
-                if ( !archivoNomina )
-                    {
-                        cerr << "No se pudo abrir el archivo." << endl;
-                        nomina.mcrearNominas();
-                        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                        exit ( 1 );
-                    }
-                fstream archivoEncabezado("registroEncabezado.dat", ios::in | ios::out | ios::binary);
-                // salir del programa si fstream no puede abrir el archivo
-                if ( !archivoEncabezado )
-                    {
-                        cerr << "No se pudo abrir el archivo." << endl;
-                        encabezado.mcrearEncabezado();
-                        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
-                        exit ( 1 );
-                    }
-                nomina.mleerNomina(archivoNomina, archivoEncabezado);
-                archivoNomina.close();
-                archivoEncabezado.close();*/
+
             }
             break;
 
         case 0:
             {
-                /*accion = "Salio del Menu Principal";
+                accion = "Salio del Menu Principal";
                 ofstream bitacora("Bitacora.txt", ios::app | ios::out);
                 if (!bitacora)
                 {
@@ -375,7 +255,7 @@ void login(){
                 <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
                 <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
                 <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
-                bitacora.close();*/
+                bitacora.close();
             }
             break;
         default:
@@ -383,14 +263,11 @@ void login(){
             getch();
             break;
         }
-    }while(imenuPrincipal!=0);
-    }
+     }while(imenuPrincipal!=0);
+    //}
 
     fclose(arch);
 
-}
+//}
 
-int main(){
-    cout << "Hello world!" << endl;
-    return 0;
-}
+
