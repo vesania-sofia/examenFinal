@@ -86,7 +86,7 @@ ClsmenuMantenimientos::mmenuMantimientos()
             break;
         case 2:
             {
-                accion = "Ingreso a CRUD Pacientes";
+                /*accion = "Ingreso a CRUD Pacientes";
 
                 bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
                 <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
@@ -94,8 +94,8 @@ ClsmenuMantenimientos::mmenuMantimientos()
                 <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
                 /*bitacora.close();*/
 
-                ClsEmpresa empresa;
-                empresa.mmenuEmpresa();
+              /*  Clspaciente paciente;
+                paciente.mmenuPaciente();*/
             }
             break;
         case 3:

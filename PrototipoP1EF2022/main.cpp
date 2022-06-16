@@ -264,10 +264,10 @@ void login(){
             break;
         }
      }while(imenuPrincipal!=0);
-    //}
+    }
 
     fclose(arch);
 
-//}
+}
 
 

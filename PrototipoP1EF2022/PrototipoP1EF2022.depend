@@ -29,3 +29,15 @@
 	<ctime>
 	<string.h>
 
+1655414904 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\main.cpp
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<ctime>
+	<string.h>
+	"ClsmenuMantenimiento.h"
+	"Clsempleados.h"
+
