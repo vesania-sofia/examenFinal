@@ -10,7 +10,7 @@
 
 //clases
 #include "ClsmenuMantenimientos.h"
-//#include "Clsmpleados.h"
+//#include "Clsempleados.h"
 //#include "Clspaciente.h"
 //#include "Clsexamen.h"
 
