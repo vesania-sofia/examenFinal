@@ -52,7 +52,7 @@ class Clspaciente
 
 
         void mestablecerApellidosPac( string );
-        string mobtenerApellidos() const;
+        string mobtenerApellidosPac() const;
 
 
         void mestablecerFechaNac( string );
