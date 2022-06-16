@@ -1,4 +1,4 @@
-#include "ClsmenuMantenimientos.h"
+#include "ClsmenuMantenimiento.h"
 //Clases auxiliares
 #include "Clsempleados.h"
 //#include "Clspaciente.h"
@@ -15,10 +15,10 @@
 
 using namespace std;
 
-ClsmenuMantenimiento::ClsmenuMantenimiento()
-{
+//ClsmenuMantenimiento::ClsmenuMantenimiento()
+//{
 
-}
+//}
 ClsmenuMantenimientos::mmenuMantimientos()
 {
     string accion="";
@@ -131,7 +131,3 @@ ClsmenuMantenimientos::mmenuMantimientos()
     }while(choice2!=0);
 }
 
-ClsmenuMantenimiento::~ClsmenuMantenimiento()
-{
-    //dtor
-}

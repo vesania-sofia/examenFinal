@@ -9,7 +9,7 @@
 #include <string.h>
 
 //clases
-#include "ClsmenuMantenimientos.h"
+#include "ClsmenuMantenimiento.h"
 //#include "Clsempleados.h"
 //#include "Clspaciente.h"
 //#include "Clsexamen.h"
