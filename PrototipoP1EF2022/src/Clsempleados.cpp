@@ -264,6 +264,40 @@ void Clsempleados::mostrarLineaEmpleado( const Clsempleados &registro )
           << endl;
 }
 
+
+void Clsempleados::mconsultarRegistroEmpleados(fstream &archivoEmpleado)
+{
+   cout << left << setw( 10 ) << "ID" << setw( 20 )
+       << "Nombre" << setw( 20 )
+       << "Apellido" << setw( 20 )
+       << "Telefono" << setw ( 20 )
+       << "DPI" << setw ( 20 )
+       << "Direccion" << setw ( 20 )
+       << "Fecha de nacimiento"<< endl;
+
+   // colocar el apuntador de posición de archivo al principio del archivo de registros
+   archivoEmpleado.seekg( 0 );
+
+   // leer el primer registro del archivo de registros
+   Clsempleados empleado;
+   archivoEmpleado.read( reinterpret_cast< char * >( &empleado),
+      sizeof( Clsempleados ) );
+
+   // copiar todos los registros del archivo de registros en el archivo de texto
+   while ( !archivoEmpleado.eof() ) {
+
+      // escribir un registro individual en el archivo de texto
+      if ( empleado.mobtenerid() != 0 )
+         mostrarLineaEmpleado(empleado);
+
+      // leer siguiente registro del archivo de registros
+      archivoEmpleado.read( reinterpret_cast< char * >( &empleado ),
+         sizeof( Clsempleados ) );
+
+   }
+}
+
+
 Clsempleados::~Clsempleados()
 {
     //dtor
