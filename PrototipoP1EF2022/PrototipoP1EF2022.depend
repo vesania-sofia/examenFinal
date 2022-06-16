@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1655410600 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\src\clsempleados.cpp
+	"Clsempleados.h"
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<ctime>
+	<string.h>
+	"ClsmenuMantenimiento.h"
+
+1655410600 c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\include\clsempleados.h
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+
+1655410600 c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\include\clsmenumantenimiento.h
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<ctime>
+	<string.h>
+
