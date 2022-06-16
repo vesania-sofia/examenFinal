@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1655410600 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\src\clsempleados.cpp
+1655416825 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\src\clsempleados.cpp
 	"Clsempleados.h"
+	"ClsMantenimiento.h"
 	<conio.h>
 	<iostream>
 	<fstream>
@@ -19,7 +20,7 @@
 	<iomanip>
 	<cstdlib>
 
-1655410600 c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\include\clsmenumantenimiento.h
+1655416551 c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\include\clsmenumantenimiento.h
 	<conio.h>
 	<iostream>
 	<fstream>
@@ -29,7 +30,7 @@
 	<ctime>
 	<string.h>
 
-1655414904 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\main.cpp
+1655416825 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\main.cpp
 	<conio.h>
 	<iostream>
 	<fstream>
@@ -39,5 +40,64 @@
 	<ctime>
 	<string.h>
 	"ClsmenuMantenimiento.h"
+	"ClsMantenimiento.h"
+	"Clsempleados.h"
+	"Clspaciente.h"
+
+1655414878 c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\include\clspaciente.h
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+
+1655416551 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\src\clsmenumantenimiento.cpp
+	"ClsmenuMantenimiento.h"
+	"Clsempleados.h"
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<cstring>
+	<ctime>
+
+1655415231 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\src\clspaciente.cpp
+	<string.h>
+	"ClsmenuMantenimiento.h"
+	"Clspaciente.h"
+
+1655416175 c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\clsmenumantenimiento.h
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<ctime>
+	<string.h>
+
+1655416793 c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\include\clsmantenimiento.h
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<ctime>
+	<string.h>
+
+1655416894 source:c:\users\sofia\progra1\proyectos\examenfinal\prototipop1ef2022\src\clsmantenimiento.cpp
+	"ClsMantenimiento.h"
+	<conio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	<cstring>
+	<ctime>
 	"Clsempleados.h"
 

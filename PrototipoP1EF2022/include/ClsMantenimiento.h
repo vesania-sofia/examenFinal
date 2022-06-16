@@ -1,5 +1,5 @@
-#ifndef CLSMENUMANTENIMIENTOS_H
-#define CLSMENUMANTENIMIENTOS_H
+#ifndef CLSMANTENIMIENTO_H
+#define CLSMANTENIMIENTO_H
 
 #include<conio.h>
 #include<iostream>
@@ -9,18 +9,16 @@
 #include<cstdlib>
 #include<ctime>
 #include<string.h>
-
-class ClsmenuMantenimiento
+class ClsMantenimiento
 {
     public:
-
-        ClsmenuMantenimiento();
+        ClsMantenimiento();
         mmenuMantenimientoT();
-        virtual ~ClsmenuMantenimiento();
+        virtual ~ClsMantenimiento();
 
     protected:
 
     private:
 };
 
-#endif // CLSMENUMANTENIMIENTO_H
+#endif // CLSMANTENIMIENTO_H

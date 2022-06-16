@@ -10,6 +10,7 @@
 
 //clases
 #include "ClsmenuMantenimiento.h"
+#include "ClsMantenimiento.h"
 #include "Clsempleados.h"
 #include "Clspaciente.h"
 //#include "Clsexamen.h"
@@ -225,8 +226,8 @@ void login(){
                 <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
                 bitacora.close();
 
-                ClsmenuMantenimientos menuMantenimientos;
-                menuMantenimientos.mmenuMantimientos();
+                ClsMantenimiento Mantenimiento;
+                Mantenimiento.mmenuMantenimientoT();
             }
             break;
         case 2:

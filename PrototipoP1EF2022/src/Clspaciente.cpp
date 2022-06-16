@@ -1,4 +1,4 @@
-#include<ctime>
+/*#include<ctime>
 #include<string.h>
 
 #include "ClsmenuMantenimiento.h"
@@ -25,7 +25,7 @@ int Clspaciente::mobtenerIDpac() const
     return m_iIDPaciente;
 }
 
-void Clsempleados::mestablecerid (int iIDpaciente)
+void Clspaciente::mestablecerid (int iIDpaciente)
 {
     m_iIDPaciente = iIDpaciente;
 }
@@ -86,3 +86,4 @@ Clspaciente::~Clspaciente()
 {
     //dtor
 }
+*/

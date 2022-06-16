@@ -1,9 +1,4 @@
-#include "ClsmenuMantenimiento.h"
-
-//Clases auxiliares
-#include "Clsempleados.h"
-//#include "Clspaciente.h"
-//#include "Clsexamen.h"
+#include "ClsMantenimiento.h"
 
 #include<conio.h>
 #include<iostream>
@@ -14,14 +9,15 @@
 #include<cstring>
 #include<ctime>
 
-using namespace std;
+//Clases auxiliares
+#include "Clsempleados.h"
 
-ClsmenuMantenimiento::ClsmenuMantenimiento()
+ClsMantenimiento::ClsMantenimiento()
 {
 
 }
 
-ClsmenuMantenimiento::mmenuMantenimientoT()
+ClsMantenimiento::mmenuMantenimientoT()
 {
     string accion="";
     //tiempo
@@ -133,3 +129,8 @@ ClsmenuMantenimiento::mmenuMantenimientoT()
     }while(choice2!=0);
 }
 
+
+ClsMantenimiento::~ClsMantenimiento()
+{
+    //dtor
+}
