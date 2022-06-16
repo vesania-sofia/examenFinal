@@ -36,9 +36,11 @@
 		</Compiler>
 		<Unit filename="include/Clsempleados.h" />
 		<Unit filename="include/ClsmenuMantenimiento.h" />
+		<Unit filename="include/Clspaciente.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Clsempleados.cpp" />
 		<Unit filename="src/ClsmenuMantenimiento.cpp" />
+		<Unit filename="src/Clspaciente.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
