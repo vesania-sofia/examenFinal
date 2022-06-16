@@ -171,7 +171,7 @@ int Clsempleados::mobtenerIndicador(const char * const iindicador)
 }
 
 
-/*void Clsempleados::mnuevoEmpleado(fstream &archivoEmpleado)
+void Clsempleados::mnuevoEmpleado(fstream &archivoEmpleado)
 {
    Clsempleados empleado;
    int m_iidEmpleado = mobtenerIndicador( "Escriba el numero del empleado" );
@@ -251,7 +251,7 @@ int Clsempleados::mobtenerIndicador(const char * const iindicador)
        getch();
    }
 }
-*/
+
 /*void Clsempleados::mostrarLineaEmpleado( const Clsempleados &registro )
 {
        cout << left << setw( 10 ) << registro.mobtenerid()
