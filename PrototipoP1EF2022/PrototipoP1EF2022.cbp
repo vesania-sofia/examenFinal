@@ -34,8 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Clsempleados.h" />
 		<Unit filename="include/ClsmenuMantenimiento.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Clsempleados.cpp" />
 		<Unit filename="src/ClsmenuMantenimiento.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
