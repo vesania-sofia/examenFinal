@@ -178,7 +178,7 @@ void Clsempleados::mnuevoEmpleado(fstream &archivoEmpleado)
 
    // desplazar el apuntador de posición del archivo hasta el registro correcto en el archivo
    archivoEmpleado.seekg(
-      ( m_inumeroPuesto - 1 ) * sizeof( Clsempleados ) );
+      ( m_iidEmpleado - 1 ) * sizeof( Clsempleados ) );
 
    // leer el registro del archivo
    archivoEmpleado.read( reinterpret_cast< char * >( &empleado ),
@@ -302,13 +302,363 @@ void Clsempleados::mmostrarLineaRegistroEmpleados( ostream &salida, const Clsemp
        salida << left << setw( 10 ) << registroempleado.mobtenerid()
           << setw( 20 ) << registroempleado.mobtenerNombre().data()
           << setw( 20 ) << registroempleado.mobtenerApellidos().data()
-          << setw( 20 ) << registroempleado.mobtenerTelefono().data
+          << setw( 20 ) << registroempleado.mobtenerTelefono().data()
           << setw( 20 ) << registroempleado.mobtenerDPI().data()
           << setw( 20 ) << registroempleado.mobtenerDireccion().data()
           << setw( 20 ) << registroempleado.mobtenerFechaNac().data()
           << endl;
 
 }
+
+void Clsempleados::mmodificarRegistroEmpleados( fstream &archivoEmpleado )
+{
+
+   Clsempleados empleado;
+   int m_iidEmpleado = mobtenerIndicador("Ingrese el numero del empleado");
+
+   archivoEmpleado.seekg(
+      ( m_iidEmpleado - 1 ) * sizeof( Clsempleados ) );
+
+   // leer el primer registro del archivo
+   archivoEmpleado.read( reinterpret_cast< char * >( &empleado ),
+      sizeof( Clsempleados ) );
+
+   // actualizar el registro
+   if ( empleado.mobtenerid() != 0 ) {
+      mmostrarLineaRegistroEmpleados( cout, empleado );
+
+      cout << "\nEscriba el nombre del empelado: ";
+      char m_snombreEmpleado [ 20 ];
+      cin >> m_snombreEmpleado;
+
+      cout << "\nEscriba el apellido del empleado: ";
+      char m_sapellidosEmpleado [ 20 ];
+      cin >> m_sapellidosEmpleado;
+
+      cout << "\nEscriba el numero de telefono: ";
+      char m_stelefonoEmpleado [ 20 ];
+      cin >> m_stelefonoEmpleado;
+
+      cout << "\nEscriba el numero de DPI: ";
+      char m_sDPIEmpleado [ 20 ];
+      cin >> m_sDPIEmpleado;
+
+      cout << "\nEscriba la direccion: ";
+      char m_sdireccion [ 20 ];
+      cin >> m_sdireccion;
+
+      cout << "\nEscriba la fecha de nacimiento: ";
+      char m_sFechaNac [ 20 ];
+      cin >> m_sFechaNac;
+
+      empleado.mestablecerid(m_iidEmpleado);
+      empleado.mestablecerNombre(m_snombreEmpleado);
+      empleado.mestablecerApellidos(m_sapellidosEmpleado);
+      empleado.mestablecerTelefono(m_stelefonoEmpleado);
+      empleado.mestablecerDPI(m_sDPIEmpleado);
+      empleado.mestablecerDireccion(m_sdireccion);
+      empleado.mestablecerFechaNac(m_sFechaNac);
+      mmostrarLineaRegistroEmpleados( cout, empleado );
+
+      // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
+      archivoEmpleado.seekp(
+         ( m_iidEmpleado - 1 ) * sizeof( Clsempleados ) );
+
+      // escribir el registro actualizado sobre el registro anterior en el archivo
+      archivoEmpleado.write(
+         reinterpret_cast< const char * >( &empleado ),
+         sizeof( Clsempleados ) );
+
+        cout << "empleado modificado con éxito.";
+
+   } // fin de instrucción if
+
+   // mostrar error si la cuenta no existe
+   else
+      cerr << "El numero #" << m_iidEmpleado
+         << " no tiene informacion." << endl;
+}
+
+
+void Clsempleados::mimprimirRegistroEmpleados (fstream &archivoEmpleado)
+{
+    Clsempleados empleado;
+    ofstream imprimir("registrodeempleado.txt", ios::out);
+
+   // salir del programa si ofstream no puede crear el archivo
+   if ( !imprimir ) {
+      cerr << "No se pudo crear el archivo." << endl;
+      exit( 1 );
+
+   } // fin de instrucción if
+
+   imprimir << left << setw( 10 ) << "ID" << setw( 20 )
+       << "Nombre" << setw( 20 )
+       << "Apellido" << setw( 20 )
+       << "Telefono" << setw( 20 )
+       << "DPI" <<setw( 20 )
+       << "Direccion" << setw( 20 )
+       << "Fecha de nacimiento"<< endl;
+   // colocar el apuntador de posición de archivo al principio del archivo de registros
+   archivoEmpleado.seekg( 0 );
+
+   // leer el primer registro del archivo de registros
+   archivoEmpleado.read( reinterpret_cast< char * >( &empleado ),
+      sizeof( Clsempleados ) );
+
+   // copiar todos los registros del archivo de registros en el archivo de texto
+   while ( !archivoEmpleado.eof() ) {
+
+      // escribir un registro individual en el archivo de texto
+      if ( empleado.mobtenerid() != 0 )
+         mmostrarLineaRegistroEmpleados( imprimir, empleado );
+
+      // leer siguiente registro del archivo de registros
+      archivoEmpleado.read( reinterpret_cast< char * >( &empleado ),
+         sizeof( Clsempleados ) );
+
+   }
+   cout << "archivo creado con éxito con el nombre de: regisrodeempleado";
+}
+
+void Clsempleados::meliminarRegistroEmpleados(fstream &archivoEmpleado)
+{
+    int iindicador= mobtenerIndicador( "Escriba el numero de empleado a eliminar" );
+
+   // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
+   archivoEmpleado.seekg(
+      ( iindicador - 1 ) * sizeof( Clsempleados ) );
+
+   // leer el registro del archivo
+   Clsempleados empleado;
+   archivoEmpleado.read( reinterpret_cast< char * >( &empleado ),
+      sizeof( Clsempleados ) );
+
+   // eliminar el registro, si es que existe en el archivo
+   if ( empleado.mobtenerid() != 0 ) {
+      Clsempleados empleadoEnBlanco;
+
+      // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
+      archivoEmpleado.seekp( ( iindicador - 1 ) *
+         sizeof( Clsempleados ) );
+
+      // reemplazar el registro existente con un registro en blanco
+      archivoEmpleado.write(
+         reinterpret_cast< const char * >( &empleadoEnBlanco ),
+         sizeof( Clsempleados ) );
+
+      cout << "Empleado numero #" << iindicador << " eliminado correctamente.\n";
+
+   }
+
+   // mostrar error si el registro no existe
+   else
+   {
+       cerr << "Empleado numero #" << iindicador << " esta vacia.\n";
+   }
+   getch();
+}
+
+void Clsempleados::mbuscarEmpleados(fstream &archivoEmpleado)
+{
+    int iindicador = mobtenerIndicador( "Escriba el numero que desea buscar" );
+
+   // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
+   archivoEmpleado.seekg(
+      ( iindicador - 1 ) * sizeof( Clsempleados ) );
+
+   // leer el primer registro del archivo
+   Clsempleados empleado;
+   archivoEmpleado.read( reinterpret_cast< char * >( &empleado ),
+      sizeof( Clsempleados ) );
+    //cout<<empleado.mobtenerClave();
+
+   // actualizar el registro
+   if ( empleado.mobtenerid() != 0 ) {
+      mmostrarLineaRegistroEmpleados( cout, empleado );
+   }
+
+   // mostrar error si la cuenta no existe
+   else
+   {
+       cerr << "El numero #" << iindicador
+         << " no tiene informacion." << endl;
+   }
+   getch();
+}
+
+
+Clsempleados::mmenuEmpleados()
+{
+    string accion="";
+    //tiempo
+    time_t t;
+    t = time(NULL);
+    struct tm *fecha;
+    fecha = localtime(&t);
+
+    string codigo;
+    fstream abrir;
+    int found=0;
+    abrir.open("Usuario.txt", ios::in);
+    if (!abrir)
+    {
+        cerr << "Archivo Usuario no Encontrado" << endl;
+        exit ( 3 );
+    }
+    else
+    {
+        abrir>>codigo;
+    }
+
+    ofstream bitacora("Bitacora.txt", ios::app | ios::out);
+    if (!bitacora)
+    {
+        cerr << "No se pudo abrir el archivo." << endl;
+        cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
+        exit ( 3 );
+    }
+
+    int iseleccionMenuEmpleados;
+    do
+    {
+        system("cls");
+        // abrir el archivo en modo de lectura y escritura
+        fstream archivoEmpleado("registrosempleado.dat", ios::in | ios::out | ios::binary);
+        // salir del programa si fstream no puede abrir el archivo
+        if ( !archivoEmpleado )
+            {
+                cerr << "No se pudo abrir el archivo." << endl;
+                mcrearEmpleados();
+                cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
+                exit ( 1 );
+
+            }
+        cout<<"-------------------------------"<<endl;
+        cout<<"|   SISTEMA GESTION EMPLEADO  |"<<endl;
+        cout<<"-------------------------------"<<endl;
+        cout<<"1. Ingreso de Empleado"<<endl;
+        cout<<"2. Despliegue de Empleado"<<endl;
+        cout<<"3. Modifica Empleado"<<endl;
+        cout<<"4. Imprimir Regisro de Empleado"<<endl;
+        cout<<"5. Borra Empleado"<<endl;
+        cout<<"6. Buscar Empleado"<<endl;
+        cout<<"0. Volver al menu superior"<<endl;
+        cout<<"-------------------------------"<<endl;
+        cout<<"Opcion a escoger:[1/2/3/4/5/6/0]"<<endl;
+        cout<<"------------------------------"<<endl;
+        cout<<"Ingresa tu Opcion: ";
+        cin>>iseleccionMenuEmpleados;
+        switch(iseleccionMenuEmpleados)
+        {
+        case 1:
+            {
+                accion = "Ingreso a Agre. Empleado";
+
+                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
+                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
+                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
+                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
+                /*bitacora.close();*/
+
+                system("cls");
+                mnuevoEmpleado(archivoEmpleado);
+                getch();
+            }
+            break;
+        case 2:
+            {
+                accion = "Ingreso a Cons. Empleado";
+
+                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
+                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
+                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
+                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
+                /*bitacora.close();*/
+
+                system("cls");
+                mconsultarRegistroEmpleados(archivoEmpleado);
+                cout << "Fin del archivo.";
+                getch();
+            }
+            break;
+        case 3:
+            {
+                accion = "Ingreso a Mod. Empleado";
+
+                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
+                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
+                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
+                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
+                /*bitacora.close();*/
+
+                system("cls");
+                mmodificarRegistroEmpleados(archivoEmpleado);
+                getch();
+            }
+            break;
+        case 4:
+            {
+                accion = "Ingreso a Impri. Empleado";
+
+                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
+                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
+                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
+                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
+                /*bitacora.close();*/
+
+                system("cls");
+                mimprimirRegistroEmpleados(archivoEmpleado);
+                getch();
+            }
+            break;
+        case 5:
+            {
+                accion = "Ingreso a Elim. Empleado";
+
+                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
+                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
+                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
+                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
+                /*bitacora.close();*/
+
+                system("cls");
+                meliminarRegistroEmpleados(archivoEmpleado);
+            }
+            break;
+        case 6:
+            {
+                accion = "Ingreso a Bus. Empleado";
+
+                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
+                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
+                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
+                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
+                /*bitacora.close();*/
+
+                system("cls");
+                mbuscarEmpleados(archivoEmpleado);
+            }
+            break;
+        case 0:
+            {
+                accion = "Salio de Gestion Empleado";
+
+                bitacora<<left<<setw(9)<< "Usuario:" <<left<<setw(10)<< codigo <<left<<setw(8)<< "Accion:" <<left<<setw(30)<< accion
+                <<left<<setw(5)<< "Dia:" <<left<<setw(5)<< fecha->tm_mday <<left<<setw(5)<< "Mes:" <<left<<setw(5)<< fecha->tm_mon+1
+                <<left<<setw(5)<< "Año:" <<left<<setw(6)<< fecha->tm_year+1900 <<left<<setw(6)<< "Hora:" <<left<<setw(5)<< fecha->tm_hour
+                <<left<<setw(8)<< "Minuto:" <<left<<setw(5)<< fecha->tm_min <<left<<setw(9)<< "Segundo:" <<left<<setw(5)<< fecha->tm_sec << endl;
+                /*bitacora.close();*/
+            }
+            break;
+        default:
+            cout<<"Opción invalida, intenta de nuevo";
+            getch();
+            break;
+        }
+    }while(iseleccionMenuEmpleados!=0);
+}
+
 
 Clsempleados::~Clsempleados()
 {
