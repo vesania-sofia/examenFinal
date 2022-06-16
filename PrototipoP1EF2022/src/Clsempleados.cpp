@@ -252,7 +252,7 @@ void Clsempleados::mnuevoEmpleado(fstream &archivoEmpleado)
    }
 }
 
-/*void Clsempleados::mostrarLineaEmpleado( const Clsempleados &registro )
+void Clsempleados::mostrarLineaEmpleado( const Clsempleados &registro )
 {
        cout << left << setw( 10 ) << registro.mobtenerid()
           << setw( 20 ) << registro.mobtenerNombre().data()
@@ -263,7 +263,7 @@ void Clsempleados::mnuevoEmpleado(fstream &archivoEmpleado)
           << setw( 20 ) << registro.mobtenerFechaNac().data()
           << endl;
 }
-*/
+
 Clsempleados::~Clsempleados()
 {
     //dtor
